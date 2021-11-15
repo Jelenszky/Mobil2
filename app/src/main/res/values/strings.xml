@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Mobil2</string>
+    <string name="app_name">határidőnapló</string>
+    <string name="preference">com.example.persistence.SHARED_PREFERENCE_KEY</string>
 </resources>

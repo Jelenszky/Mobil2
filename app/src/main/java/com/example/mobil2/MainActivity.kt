@@ -17,8 +17,9 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Ti
     private lateinit var tv2 : EditText
     private lateinit var textView : TextView
     private lateinit var bt: Button
-    private lateinit var bt2: Button
+    private lateinit var bt2:Button
     private val  REQUEST_CODE=1
+    lateinit var sharedPreference: SharedPreferences
 
     private var day =0
     private var month=0
@@ -44,13 +45,16 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Ti
         bt2=findViewById(R.id.button2)
 
 
+        sharedPreference = getSharedPreferences(getString(R.string.preference), Context.MODE_PRIVATE)
+        refreshTeendok()
+
 
 
     }
 
     fun onClickHandler(view : View){
         val speechintent= Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-        speechintent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        speechintent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
         speechintent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Speach to text")
         startActivityForResult(speechintent,REQUEST_CODE)
 
@@ -100,17 +104,28 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Ti
 
     fun buttonHandler(view: View){
 
-
-            Toast.makeText(applicationContext, tv2.text.toString()+" "+ tv.text.toString()+ " hozzáadva",
-                Toast.LENGTH_LONG).show()
-
-
+        if(tv2.text.toString() != "" && tv.text.toString() != "") {
+            with(sharedPreference.edit()) {
+                putString(tv2.text.toString(), tv.text.toString())
+                apply()
+            }
+            Toast.makeText(applicationContext, tv2.text.toString()+" "+ tv.text.toString()+ " hozzáadva",Toast.LENGTH_LONG).show()
+            refreshTeendok()
+        }
     }
-
 
     fun listazPushed(view: View){
         val intent= Intent(this,SecondActivity::class.java)
         startActivity(intent)
+    }
+
+    fun refreshTeendok(){
+        textView.setText("Jelenleg ${sharedPreference.all.size} teendője van")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        refreshTeendok()
     }
 
 

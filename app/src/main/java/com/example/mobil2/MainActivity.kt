@@ -108,6 +108,11 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Ti
     }
 
 
+    fun listazPushed(view: View){
+        val intent= Intent(this,SecondActivity::class.java)
+        startActivity(intent)
+    }
+
 
 
 

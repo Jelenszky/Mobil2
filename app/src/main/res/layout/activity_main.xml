@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-
+        android:onClick="buttonHandler"
         android:text="Hozzáad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -47,7 +47,7 @@
         android:layout_width="159dp"
         android:layout_height="125dp"
         android:layout_marginTop="480dp"
-
+        android:onClick="onClickHandler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +71,7 @@
         android:layout_width="177dp"
         android:layout_height="124dp"
         android:layout_marginTop="4dp"
-
+        android:onClick="pickDate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -92,7 +92,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Teendők listázása"
-      
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
@@ -108,5 +107,6 @@
         app:layout_constraintHorizontal_bias="0.585"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
